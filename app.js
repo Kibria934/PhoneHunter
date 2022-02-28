@@ -10,19 +10,20 @@ const loadData = () => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${value}`
     fetch(url)
         .then(res => res.json())
-        .then(data => showPhone(data.data));
+        .then(data => showPhone(data.data.slice(0, 20)));
 }
 const showPhone = names => {
     const value = document.getElementById('search-field').value;
     const container = document.getElementById('second-container');
-    console.log(names);
+    // error handaling
 
-    if (value == '') {
+    if (value == '' || names[0] == undefined) {
         error('block')
     }
     if (isNaN(value)) {
         error('none')
         names.forEach(brand => {
+
             const div = document.createElement('div');
             div.innerHTML = `
                 <div class="col">
@@ -38,6 +39,7 @@ const showPhone = names => {
                 </div>
            `;
             container.appendChild(div)
+
         });
     }
 
