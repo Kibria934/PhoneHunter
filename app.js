@@ -39,7 +39,6 @@ const showPhone = name => {
                         <div class="card-body">
                             <h5 class="card-title">Name: ${brand.phone_name}</h5>
                             <h5 class="card-title">Phne Brand: ${brand.brand}</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                            <button onclick="details('${brand.slug}')" id = "search-button"> explore</button>
                         </div>
                     </div>
@@ -93,7 +92,7 @@ const displayDetails = (input) => {
         <p class="text-black fs-4 fw-semibold">Radio: <span class="fs-5">${input.others.Radio}</span></p>
         <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>
           </h3>
-             <h3><p class="text-primary fs-4 fw-semibold">sensor: <span class="fs-5 text-black">${input.mainFeatures.sensors}</span></p></h3>
+           <div class="d-flex flex-wrap">  <h3><p class="text-primary d-flex d-wrap fs-4 fw-semibold">sensor: <span class="fs-5 text-black">${input.mainFeatures.sensors}</span></p></h3></div>
                 `;
         detailsContainer.appendChild(div)
 
@@ -120,8 +119,12 @@ const displayDetails = (input) => {
         <p class="text-black fs-4 fw-semibold">GPS: <span class="fs-5">${input.others.GPS}</span></p>
         <p class="text-black fs-4 fw-semibold">NFC: <span class="fs-5">${input.others.NFC}</span></p>
         <p class="text-black fs-4 fw-semibold">Radio: <span class="fs-5">${input.others.Radio}</span></p>
-        <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>  </h3>
-        <h3><p class="text-primary fs-4 fw-semibold">sensor: <span class="fs-5 text-black">${input.mainFeatures.sensors}</span></p></h3>
+        <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>  
+
+            <h3 class="text-primary card-text">sensor: </h3> </br>
+            <p><span class="fs-5  text-black">${input.mainFeatures.sensors}</span></p></h3>
+
+
    `;
         detailsContainer.appendChild(div);
 
