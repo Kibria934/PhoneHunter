@@ -66,10 +66,13 @@ const details = (id) => {
 
 
 const displayDetails = (input) => {
+    // console.log(input);
     console.log(input);
+
+    // ===================== If Release date not found than this code will work=============//
     const { chipSet, sensor, releaseDate, others } = input;
     if ((releaseDate != undefined || others != undefined) && (releaseDate === '')) {
-        console.log(releaseDate, sensor, others);
+        // console.log(releaseDate, sensor, others);
         const detailsContainer = document.getElementById('details-display');
         const div = document.createElement('div');
         div.innerHTML = `
@@ -84,11 +87,19 @@ const displayDetails = (input) => {
          <p class="text-black fs-4 fw-semibold">Memory: <span class="fs-5">${input.mainFeatures.memory}</span></p>
          <p class="text-black fs-4 fw-semibold">Storage: <span class="fs-5">${input.mainFeatures.storage}</span></p>
          </h3>
-         <h3>Other: <p class="text-black fs-4 fw-semibold">Butothe: <span class="fs-5">${input.others.Bluetooth}</span></p>
-         </h3>
+         <h3>Other: <p class="text-black fs-4 fw-semibold">Bluetooth: <span class="fs-5">${input.others.Bluetooth}</span></p>
+          <p class="text-black fs-4 fw-semibold">WLAN: <span class="fs-5">${input.others.WLAN}</span></p>
+        <p class="text-black fs-4 fw-semibold">GPS: <span class="fs-5">${input.others.GPS}</span></p>
+        <p class="text-black fs-4 fw-semibold">NFC: <span class="fs-5">${input.others.NFC}</span></p>
+        <p class="text-black fs-4 fw-semibold">Radio: <span class="fs-5">${input.others.Radio}</span></p>
+        <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>
+
+          </h3>
                 `;
         detailsContainer.appendChild(div)
     }
+    // ===================== If Release date not found than this code will work=============//
+
     if (releaseDate != '') {
         const detailsContainer = document.getElementById('details-display');
         const div = document.createElement('div');
@@ -96,7 +107,7 @@ const displayDetails = (input) => {
     <div class = " py-3 text-center">
         <img width="300" height="400" src="${input.image}" alt="">
         <h2>Name: <span class="text-success fw-semibold py-3">${input.name}</span> </h2>
-        <h3> Release Date: <span class="text-danger fw-semibold py-3">${input.releaseDate}</span> </h3>
+        <h3> Release Date: <span class="text-success fw-semibold py-3">${input.releaseDate}</span> </h3>
         <h3>Brand Name: <span class="text-black fw-semibold py-3">${input.brand}</span> </h3>
         </div>        
         <h3 id="mainFeature">Main Feature:  <p class="text-black fs-4 fw-semibold" id="chipset">Chipset: ${input.mainFeatures.chipSet}</p>
@@ -105,6 +116,12 @@ const displayDetails = (input) => {
          <p class="text-black fs-4 fw-semibold">Storage: <span class="fs-5">${input.mainFeatures.storage}</span></p>
          </h3>
          <h3>Other: <p class="text-black fs-4 fw-semibold">Butothe: <span class="fs-5">${input.others.Bluetooth}</span></p>
+        <p class="text-black fs-4 fw-semibold">WLAN: <span class="fs-5">${input.others.WLAN}</span></p>
+        <p class="text-black fs-4 fw-semibold">GPS: <span class="fs-5">${input.others.GPS}</span></p>
+        <p class="text-black fs-4 fw-semibold">NFC: <span class="fs-5">${input.others.NFC}</span></p>
+        <p class="text-black fs-4 fw-semibold">Radio: <span class="fs-5">${input.others.Radio}</span></p>
+        <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>
+
          </h3>
                 `;
         detailsContainer.appendChild(div)
