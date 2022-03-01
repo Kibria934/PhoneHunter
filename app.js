@@ -24,12 +24,10 @@ const showPhone = name => {
     const names = name.data.slice(1, 21)
     const value = document.getElementById('search-field').value;
     const container = document.getElementById('second-container');
-    // error handaling
 
     if (value == '') {
         error('block')
     }
-
     if (isNaN(value)) {
         error('none')
         names.forEach(brand => {
@@ -51,6 +49,7 @@ const showPhone = name => {
         });
     }
     document.getElementById('search-field').value = ``
+
 }
 
 
@@ -62,6 +61,7 @@ const details = (id) => {
     fetch(url)
         .then(res => res.json())
         .then(id => displayDetails(id.data))
+
 }
 
 
@@ -96,6 +96,7 @@ const displayDetails = (input) => {
              <h3><p class="text-primary fs-4 fw-semibold">sensor: <span class="fs-5 text-black">${input.mainFeatures.sensors}</span></p></h3>
                 `;
         detailsContainer.appendChild(div)
+
     }
     // ===================== If Release date  found than this code will work=============//
 
@@ -121,10 +122,8 @@ const displayDetails = (input) => {
         <p class="text-black fs-4 fw-semibold">Radio: <span class="fs-5">${input.others.Radio}</span></p>
         <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>  </h3>
         <h3><p class="text-primary fs-4 fw-semibold">sensor: <span class="fs-5 text-black">${input.mainFeatures.sensors}</span></p></h3>
-
-       
-
-                `;
+   `;
         detailsContainer.appendChild(div);
+
     }
 }
