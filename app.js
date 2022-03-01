@@ -58,7 +58,6 @@ const showPhone = name => {
 const details = (id) => {
     const detailsContainer = document.getElementById('details-display');
     detailsContainer.innerHTML = ``
-
     const url = `https://openapi.programming-hero.com/api/phone/${id}`
     fetch(url)
         .then(res => res.json())
@@ -68,17 +67,36 @@ const details = (id) => {
 
 const displayDetails = (input) => {
     console.log(input);
-
     const { chipSet, sensor, releaseDate, others } = input;
-    console.log(releaseDate, sensor, others);
-    if (releaseDate != undefined || others != undefined) {
+    if ((releaseDate != undefined || others != undefined) && (releaseDate === '')) {
+        console.log(releaseDate, sensor, others);
         const detailsContainer = document.getElementById('details-display');
         const div = document.createElement('div');
-
         div.innerHTML = `
     <div class = " py-3 text-center">
         <img width="300" height="400" src="${input.image}" alt="">
         <h2>Name: <span class="text-success fw-semibold py-3">${input.name}</span> </h2>
+        <h3><span class="text-danger fw-semibold py-3">NO realease date found</span> </h3>
+        <h3>Brand Name: <span class="text-black fw-semibold py-3">${input.brand}</span> </h3>
+        </div>        
+        <h3 id="mainFeature">Main Feature:  <p class="text-black fs-4 fw-semibold" id="chipset">Chipset: ${input.mainFeatures.chipSet}</p>
+         <p class="text-black fs-4 fw-semibold">Display size: <span class="fs-5">${input.mainFeatures.displaySize}</span></p>
+         <p class="text-black fs-4 fw-semibold">Memory: <span class="fs-5">${input.mainFeatures.memory}</span></p>
+         <p class="text-black fs-4 fw-semibold">Storage: <span class="fs-5">${input.mainFeatures.storage}</span></p>
+         </h3>
+         <h3>Other: <p class="text-black fs-4 fw-semibold">Butothe: <span class="fs-5">${input.others.Bluetooth}</span></p>
+         </h3>
+                `;
+        detailsContainer.appendChild(div)
+    }
+    if (releaseDate != '') {
+        const detailsContainer = document.getElementById('details-display');
+        const div = document.createElement('div');
+        div.innerHTML = `
+    <div class = " py-3 text-center">
+        <img width="300" height="400" src="${input.image}" alt="">
+        <h2>Name: <span class="text-success fw-semibold py-3">${input.name}</span> </h2>
+        <h3> Release Date: <span class="text-danger fw-semibold py-3">${input.releaseDate}</span> </h3>
         <h3>Brand Name: <span class="text-black fw-semibold py-3">${input.brand}</span> </h3>
         </div>        
         <h3 id="mainFeature">Main Feature:  <p class="text-black fs-4 fw-semibold" id="chipset">Chipset: ${input.mainFeatures.chipSet}</p>
