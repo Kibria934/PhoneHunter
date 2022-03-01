@@ -14,6 +14,7 @@ const loadData = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => showPhone(data));
+
     } else {
         error('block')
     }
@@ -32,7 +33,6 @@ const showPhone = name => {
     if (isNaN(value)) {
         error('none')
         names.forEach(brand => {
-            console.log(brand.slug);
             const div = document.createElement('div');
             div.innerHTML = `
                 <div class="col">
@@ -66,13 +66,12 @@ const details = (id) => {
 
 
 const displayDetails = (input) => {
-    // console.log(input);
-    console.log(input);
-
     // ===================== If Release date not found than this code will work=============//
-    const { chipSet, sensor, releaseDate, others } = input;
-    if ((releaseDate != undefined || others != undefined) && (releaseDate === '')) {
-        // console.log(releaseDate, sensor, others);
+    const { releaseDate, others } = input;
+    const sensorList = input.mainFeatures.sensors;
+
+    // ======================sensors=================
+    if ((releaseDate != '' || others != undefined) && (releaseDate === '')) {
         const detailsContainer = document.getElementById('details-display');
         const div = document.createElement('div');
         div.innerHTML = `
@@ -93,12 +92,12 @@ const displayDetails = (input) => {
         <p class="text-black fs-4 fw-semibold">NFC: <span class="fs-5">${input.others.NFC}</span></p>
         <p class="text-black fs-4 fw-semibold">Radio: <span class="fs-5">${input.others.Radio}</span></p>
         <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>
-
           </h3>
+             <h3><p class="text-primary fs-4 fw-semibold">sensor: <span class="fs-5 text-black">${input.mainFeatures.sensors}</span></p></h3>
                 `;
         detailsContainer.appendChild(div)
     }
-    // ===================== If Release date not found than this code will work=============//
+    // ===================== If Release date  found than this code will work=============//
 
     if (releaseDate != '') {
         const detailsContainer = document.getElementById('details-display');
@@ -120,13 +119,12 @@ const displayDetails = (input) => {
         <p class="text-black fs-4 fw-semibold">GPS: <span class="fs-5">${input.others.GPS}</span></p>
         <p class="text-black fs-4 fw-semibold">NFC: <span class="fs-5">${input.others.NFC}</span></p>
         <p class="text-black fs-4 fw-semibold">Radio: <span class="fs-5">${input.others.Radio}</span></p>
-        <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>
+        <p class="text-black fs-4 fw-semibold">USB: <span class="fs-5">${input.others.USB}</span></p>  </h3>
+        <h3><p class="text-primary fs-4 fw-semibold">sensor: <span class="fs-5 text-black">${input.mainFeatures.sensors}</span></p></h3>
 
-         </h3>
+       
+
                 `;
-        detailsContainer.appendChild(div)
-    } else {
-        console.log('nai');
+        detailsContainer.appendChild(div);
     }
-
 }
